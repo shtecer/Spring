@@ -12,8 +12,8 @@ import java.util.*;
 
 @Service
 public class StorageService {
-    private static Map<UUID, Product> productsMap = Map.of();
-    private static Map<UUID, Article> articlesMap = Map.of();
+    private static Map<UUID, Product> productsMap;
+    private static Map<UUID, Article> articlesMap;
 
 
     public StorageService() {
@@ -23,11 +23,11 @@ public class StorageService {
 
     }
 
-    public static Collection<Product> getAllProducts() {
+    public Collection<Product> getAllProducts() {
         return productsMap.values();
     }
 
-    public static Collection<Article> getAllArticles() {
+    public Collection<Article> getAllArticles() {
         return articlesMap.values();
     }
 
@@ -82,5 +82,8 @@ public class StorageService {
         return searchables;
     }
 
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productsMap.get(id));
+    }
 
 }
