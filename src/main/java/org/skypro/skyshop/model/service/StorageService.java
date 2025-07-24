@@ -12,23 +12,23 @@ import java.util.*;
 
 @Service
 public class StorageService {
-    private static Map<UUID, Product> productsMap;
-    private static Map<UUID, Article> articlesMap;
+    private final Map<UUID, Product> products;
+    private final Map<UUID, Article> articles;
 
 
     public StorageService() {
-        this.productsMap = new HashMap<>();
-        this.articlesMap = new HashMap<>();
+        this.products = new HashMap<>();
+        this.articles = new HashMap<>();
         TestData();
 
     }
 
     public Collection<Product> getAllProducts() {
-        return productsMap.values();
+        return products.values();
     }
 
     public Collection<Article> getAllArticles() {
-        return articlesMap.values();
+        return articles.values();
     }
 
     private void TestData() {
@@ -68,22 +68,22 @@ public class StorageService {
     }
 
     private void addProductInBasket(Product product) {
-        productsMap.put(product.getId(), product);
+        products.put(product.getId(), product);
     }
 
     private void addArticleInBasket(Article article) {
-        articlesMap.put(article.getId(), article);
+        articles.put(article.getId(), article);
     }
 
-    public static Collection<Searchable> getAllSearchables() {
+    public Collection<Searchable> getAllSearchables() {
         List<Searchable> searchables = new ArrayList<>();
-        searchables.addAll(productsMap.values());
-        searchables.addAll(articlesMap.values());
+        searchables.addAll(products.values());
+        searchables.addAll(articles.values());
         return searchables;
     }
 
     public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(productsMap.get(id));
+        return Optional.ofNullable(products.get(id));
     }
 
 }
