@@ -67,7 +67,6 @@ public class SearchServiceTest {
         verify(storageService, times(1)).getAllSearchables();
     }
 
-    // Тест 3: Поиск, когда есть один подходящий продукт
     @Test
     public void OneMatchingProduct_search_ReturnsOneResult() {
         Product product1 = createTestProduct("чай");
